@@ -1,3 +1,7 @@
 *.pyc
 *.log
 sys
+images
+images_bak
+*.dat
+*.txt

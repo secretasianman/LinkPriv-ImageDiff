@@ -5,20 +5,38 @@ import sys
 from levenshtein import levenshtein_distance
 from hamming import hamming_distance
 
-def main():
-    if len(sys.argv) != 3:
-        print "Incorrect number of arguments"
-        sys.exit(1)
+def get_percent_hamming_distance(file_name1, file_name2):
+    try:
+        file1 = open(file_name1, 'r')
+        file2 = open(file_name2, 'r')
+        string1 = file1.read()
+        string2 = file2.read()
+        return float(hamming_distance(string1, string2))/min(len(string1), len(string2))
+    except IOError:
+        print >> sys.stderr, "ERROR: ", file_name1, file_name2
+    finally:
+        file1.close()
+        file2.close()
 
-    else:
-        try:
-            file1 = open(sys.argv[1], 'r')
-            file2 = open(sys.argv[2], 'r')
-            print hamming_distance(file1.read(), file2.read())
-            #print levenshtein_distance(file1.read(), file2.read())
-        except IOError:
-            print "Invalid inputs"
-            sys.exit(1)
+def main():
+    imgs = sys.argv[1:]
+
+    l = len(imgs)
+    tot = l*l
+    count = 0
+    for i1 in imgs:
+        for i2 in imgs:
+            count +=1
+            if not count % 100:
+                print >> sys.stderr, "%d/%d"%(count, tot)
+
+            if i1 == i2:
+                hm = 0
+            else:
+                hm = get_percent_hamming_distance(i1,i2)
+
+            print i1,i2,hm
+
 
 if __name__ == "__main__":
     main()

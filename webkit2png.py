@@ -365,7 +365,7 @@ def init_qtgui(display=None, style=None, qtargs=[]):
     return QApplication(qtargs2)
 
 
-if __name__ == '__main__':
+def main():
     # This code will be executed if this module is run 'as-is'.
 
     # Enable HTTP proxy
@@ -500,3 +500,6 @@ if __name__ == '__main__':
 
     QTimer.singleShot(0, __main_qt)
     sys.exit(app.exec_())
+
+if __name__ == '__main__':
+    main()
