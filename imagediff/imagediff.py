@@ -41,7 +41,7 @@ def imagediff(method, file_name1, file_name2):
 
         if method == 'levenshtein':
             try:
-                return float(levenshtein_distance(string1, string2))/min(len(string1), len(string2))
+                return float(levenshtein_distance(string1, string2))/max(len(string1), len(string2))
             except ZeroDivisionError:
                 return 1
         elif method == 'hamming':
