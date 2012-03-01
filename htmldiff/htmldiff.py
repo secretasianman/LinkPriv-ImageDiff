@@ -284,7 +284,8 @@ if __name__ == '__main__':
         import doctest
         doctest.testmod()
     elif arguments.c:
-        print percentDiffFiles(arguments.file1, arguments.file2)
+        print arguments.file1 + "\t" + arguments.file2 + "\t" +\
+            str(percentDiffFiles(arguments.file1, arguments.file2))
     else:
         print diffFiles(arguments.file1, arguments.file2)
     

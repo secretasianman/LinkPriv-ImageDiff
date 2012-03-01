@@ -76,4 +76,5 @@ if __name__ == "__main__":
     else:
         method = ''
     
-    print imagediff(method, arguments.file_name1, arguments.file_name2)
+    print arguments.file_name1 + "\t" + arguments.file_name2 + "\t" + \
+        str(imagediff(method, arguments.file_name1, arguments.file_name2))
